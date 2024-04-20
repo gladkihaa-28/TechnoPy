@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="/static/card.css">
+</head>
+<body class="body">
+  <section class="section">
+    <a href="/" class="button-7 w-button"></a>
+    <a href="/catalog" class="button-8 w-button"></a>
+    <div class="w-layout-blockcontainer container-4 w-container">
+      <div class="form-block w-form">
+            <form id="email-form" name="email-form" data-name="Email Form" method="post" action="/search" data-wf-page-id="65cf66a0acdcab14f1e6c43b" data-wf-element-id="223a2c1b-c5ef-bc50-0324-365735b6aa20">
+              <input class="text-field w-input" maxlength="256" name="text" data-name="Text" placeholder="" type="text" id="text" required="">
+              <button type="submit" class="button-6 w-button"></button>
+            </form>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer container-3 w-container">
+      <a href="/cart" class="button-3 w-button"></a>
+      <a href="/profile" class="button-5 w-button"></a>
+    </div>
+  </section>
+
+  <div class="w-layout-blockcontainer container-7 w-container">
+    <div class="w-layout-blockcontainer container-8 w-container"><img src="{{ product.image }}" loading="lazy" width="250" alt=""></div>
+    <div class="w-layout-blockcontainer container-9 w-container">
+      <div class="text-block-4">{{ product.name }}</div>
+      <div class="text-block-5">{{ product.price }}</div>
+      <div class="text-block-6">Характеристики:</div>
+      <div class="text-block-8">{{ product.parameters }}</div>
+      <div class="text-block-6">Описание:</div>
+      <div class="text-block-9">{{ product.description }}</div>
+      <form method="post" action="/add_card/{{ product.name }}">
+        <button type="submit" class="button w-button">В корзину</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог товаров</title>
+<link rel="stylesheet" href="/static/profile.css">
+</head>
+
+<body class="body">
+  <section class="section">
+    <a href="/" class="button-7 w-button"></a>
+    <a href="/catalog" class="button-8 w-button"></a>
+    <div class="w-layout-blockcontainer container-4 w-container">
+      <div class="form-block w-form">
+            <form id="email-form" name="email-form" data-name="Email Form" method="post" action="/search" data-wf-page-id="65cf66a0acdcab14f1e6c43b" data-wf-element-id="223a2c1b-c5ef-bc50-0324-365735b6aa20">
+              <input class="text-field w-input" maxlength="256" name="text" data-name="Text" placeholder="" type="text" id="text" required="">
+              <button type="submit" class="button-6 w-button"></button>
+            </form>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer container-3 w-container">
+      <a href="/cart" class="button-3 w-button"></a>
+      <a href="/profile" class="button-5 w-button"></a>
+    </div>
+  </section>
+
+  {% for cat, msg in get_flashed_messages(True) %}
+  <div class="flash {{cat}}">{{msg}}</div>
+  {% endfor %}
+
+  <div class="w-layout-blockcontainer container-10 w-container">
+    <div class="w-layout-blockcontainer container-11 w-container">
+      <table border="0" class="profile-table">
+        <tr><td valign="top">
+          <div class="profile-ava"><img src="{{ url_for('userava') }}"></div>
+          <div class="profile-load">
+          <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+            <p><input type="file" name="file">
+            <p><input type="submit" value="Загрузить">
+          </form>
+          </div>
+        </td>
+        <td valign="top" class="profile-panel">
+          <p><a href="{{url_for('logout')}}">Выйти из профиля</a>
+          <ul class="profile-info">
+          <li>Имя: {{ current_user.get_name() }}</li>
+          <li>Пароль: {{ current_user.get_psw() }}</li>
+          </ul>
+        </td></tr>
+      </table>
+    </div>
+  </div>
+
+
+</body>
+</html>

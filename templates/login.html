@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Авторизация</title>
+<link rel="stylesheet" href="/static/login.css">
+</head>
+
+<body class="body">
+  <section class="section">
+    <a href="/" class="button-7 w-button"></a>
+    <a href="/catalog" class="button-8 w-button"></a>
+    <div class="w-layout-blockcontainer container-4 w-container">
+      <div class="form-block w-form">
+            <form id="email-form" name="email-form" data-name="Email Form" method="post" action="/search" data-wf-page-id="65cf66a0acdcab14f1e6c43b" data-wf-element-id="223a2c1b-c5ef-bc50-0324-365735b6aa20">
+              <input class="text-field w-input" maxlength="256" name="text" data-name="Text" placeholder="" type="text" id="text" required="">
+              <button type="submit" class="button-6 w-button"></button>
+            </form>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer container-3 w-container">
+      <a href="/cart" class="button-3 w-button"></a>
+      <a href="/profile" class="button-5 w-button"></a>
+    </div>
+  </section>
+  {% for cat, msg in get_flashed_messages(True) %}
+  <div class="flash {{cat}}">{{msg}}</div>
+  {% endfor %}
+  <div class="w-layout-blockcontainer container-10 w-container">
+    <div class="w-layout-blockcontainer container-11 w-container">
+      <form action="" method="post" class="form-contact">
+        <p><label>Имя:</label>
+        <p><input type="text" name="name" value="" required />
+        <p><label>Пароль: </label>
+        <p><input type="password" name="psw" value="" required />
+        <p><input type="submit" value="Войти" />
+        <hr align=left width="300px">
+        <p><a href="{{url_for('register')}}">Зарегистрироваться</a>
+      </form>
+    </div>
+
+  <div class="base-container">
+  {% for product in products %}
+    <div class="w-layout-blockcontainer container w-container"><img src="{{ product.image }}" loading="lazy" width="149" alt="" class="image">
+      <div class="w-layout-blockcontainer container-2 w-container">
+        <div class="text-block">
+          <a href="/product/{{ product.name }}">{{ product.name }}</a>
+        </div>
+        <div class="text-block">{{ product.price }}</div>
+        <button class="button w-button">В корзину</button>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+
+
+ </body>
+</html>
